@@ -1,2 +1,3 @@
 # Olio-ohjelmointi
-Opettaja Johanna Vuokila
+Opettaja Johanna Vuokila.
+:)
