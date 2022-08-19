@@ -11,8 +11,6 @@ public class CalculatorApp {
         int number2 = input.nextInt();
         System.out.println("Please enter an operator: ");
         String operator = input.next();
-        //Calculator calculator = new Calculator(number, number2, operator);
-        //System.out.println(calculator.calculate());
  
         if (operator.equals("+")) {
             System.out.println("tulos: " +number + operator + number2 + " = " + (number + number2));
