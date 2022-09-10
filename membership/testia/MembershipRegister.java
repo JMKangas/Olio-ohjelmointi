@@ -21,7 +21,6 @@ public class MembershipRegister {
                 System.out.println("File already exists.");
             }
 
-            // Loop program
             while (true) {
                 System.out.println("1) Add a new member to the register");
                 System.out.println("2) Print the entire content of the member register");
@@ -30,6 +29,7 @@ public class MembershipRegister {
                 input.nextLine();
 
                 if (choice == 1) {
+
                     System.out.println("First name:");
                     fname = input.nextLine();
                     System.out.println("Last name:");
@@ -41,22 +41,41 @@ public class MembershipRegister {
                     myWriter.write(fname + " " + lname + " " + tel + "\n");
                     myWriter.close();
 
-                    System.out.println("1) Return to the main menu");
-                    System.out.println("2) End the program");
-                    choice = input.nextInt();
+                    System.out.println("1) Add another member" + "\n" + "2) return to main menu" + "\n" + "2) quit the program");
+                   
+                    int subchoice = input.nextInt();
 
-                    if (choice == 1) {
+                    if (subchoice == 1) {
+
+                        System.out.println("First name:");
+                        fname = input.next();
+                        System.out.println("Last name:");
+                        lname = input.next();
+                        System.out.println("Telephone:");
+                        tel = input.next();
+
+                        myWriter = new FileWriter(file, true);
+                        myWriter.write(fname + " " + lname + " " + tel + "\n");
+                        myWriter.close();
+
+                    } else if (subchoice == 2) {
+
                         continue;
+
                     } else {
+
                         break;
+
                     }
 
                 } else if (choice == 2) {
-                    // Print the entire content of the member register
+                    
                     Scanner myReader = new Scanner(file);
                     while (myReader.hasNextLine()) {
-                        System.out.println(myReader.nextLine());
+                    System.out.println(myReader.nextLine());
+
                     }
+
                     myReader.close();
 
                     System.out.println("1) Return to the main menu");
@@ -66,22 +85,38 @@ public class MembershipRegister {
                     choice = input.nextInt();
 
                     if (choice == 1) {
+
                         continue;
+
                     } else {
+
                         file.delete();
                         input.close();
                         break;
+                        
                     }
 
                 } else {
+
                     file.delete();
                     input.close();
                     break;
+
                 }
             }
 
-        } catch (IOException e) {
+            } catch (IOException e) {
+
+                e.printStackTrace();
+
+        } catch (Exception e) {
+
             e.printStackTrace();
+
+        } finally {
+
+            System.out.println("Thank you for using the program!");
+
         }
     }
 }
