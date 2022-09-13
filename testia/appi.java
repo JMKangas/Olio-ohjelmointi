@@ -3,6 +3,7 @@ package testia;
 
 import java.text.*;  
 import java.util.Date;  
+import java.util.Locale;
  
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -11,99 +12,99 @@ import java.util.Scanner;
 
 
 public class appi {
-    
-    public static void main(String[] args) {
+    Scanner scan = new Scanner(System.in); 
+	
+	
+	
 
+	public void showMenu() {
+		System.out.println("1.Addition");
+		System.out.println("2.Substraction");
+		System.out.println("3.Multiplication");
+		System.out.println("4.Division");
 
-        
-        try {
+	}
 
-                BufferedReader br = null;
-                Scanner input = new Scanner(System.in);
-                br = new BufferedReader(new InputStreamReader(System.in));
-                SimpleDateFormat sdf = new SimpleDateFormat("dd MM yyyy");
+	public double division() {
+		scan.useLocale(Locale.US); //set to this have "." instead of "," it depends on your region
+		double a, b;
+		System.out.println("Enter first value");
+		a = scan.nextDouble();
+		System.out.println("Enter first value");
+		b = scan.nextDouble();
+		double val = a / b;
 
-                System.out.println("Hello! Welcome to the date calculator!" + "\n" + "Please enter the date you want to calculate the difference between. Note that difference comes between your date and today." + "\n" + "Format: dd mm yyyy (example: 01 01 2018)");
-                
-                Date dt1 = sdf.parse(br.readLine().trim());
+		return val;
+	}
 
-                System.out.println("Would you like to have difference in days or months? (days/months)" + "\n" + "1. Days" + "\n" + "2. Months");
-                int choice = input.nextInt();
+	public double mutliplication() {
+		scan.useLocale(Locale.US);
+		double a, b;
+		System.out.println("Enter first value");
+		a = scan.nextDouble();
+		System.out.println("Enter first value");
+		b = scan.nextDouble();
+		double val = a * b;
 
-                if (choice == 1) {
+		return val;
+	}
 
-                    Days(dt1);
+	public double substraction() {
+		scan.useLocale(Locale.US);
+		double a, b;
+		System.out.println("Enter first value");
+		a = scan.nextDouble();
+		System.out.println("Enter first value");
+		b = scan.nextDouble();
+		double val = a - b;
 
-                } else if (choice == 2) {
+		return val;
+	}
 
-                    Months(dt1);
+	public double addition() {
+		scan.useLocale(Locale.US);
+		double a, b;
+		System.out.println("Enter first value");
+		a = scan.nextDouble();
+		System.out.println("Enter first value");
+		b = scan.nextDouble();
+		double val = a + b;
 
-                } else {
-                    System.out.println("Invalid choice!");
-                }
+		return val;
+	}
 
-                if (br != null) {
-                    br.close();
-                }
-                input.close();
-            }
-            catch (Exception e) {
-                System.out.println(e);
-            } finally {
-                System.out.println("Finally");
-            }
+	public static void main(String[] args) {
 
-        }
-        static void Days (Date dt1) {
+		appi calc = new appi();
+		Scanner scan = new Scanner(System.in);
+		scan.useLocale(Locale.US);
+		int x;
+		double score;
+		calc.showMenu();
+		x = scan.nextInt();
 
-            try {
+		switch (x) {
+		case 1:
+			score = calc.addition();
+			System.out.println(score);
+			break;
+		case 2:
+			score = calc.substraction();
+			System.out.println(score);
+			break;
+		case 3:
+			score = calc.mutliplication();
+			System.out.println(score);
+			break;
+		case 4:
+			score = calc.division();
+			System.out.println(score);
+			break;
+		default:
+			System.out.println("Wrong choice");
+			break;
+		}
 
-            SimpleDateFormat sdf = new SimpleDateFormat("dd MM yyyy");
+	}
 
-            Date date = new Date();
-            String now = sdf.format(date);
-
-            Date dt2 = sdf.parse(now);
- 
-
-            long diff = dt2.getTime() - dt1.getTime();
-
-            long days = (diff / 1000L / 60L / 60L / 24L);
-
-            System.out.println("Days: " + days);
-
-            }
-            catch (Exception e) {
-                System.out.println(e);
-            } finally {
-                System.out.println("\n");
-            }
-        }
-
-        static void Months(Date dt1) {
-
-            try {
-
-            SimpleDateFormat sdf = new SimpleDateFormat("dd MM yyyy");
-
-            SimpleDateFormat formatter = new SimpleDateFormat("dd MM yyyy");
-            Date date = new Date();
-            String now = formatter.format(date);
-
-            Date dt2 = sdf.parse(now);
-            long diff = dt2.getTime() - dt1.getTime();
-
-            long days = (diff / 1000L / 60L / 60L / 24L);
-            double months = days / 30.417;
-
-            System.out.println("Days: " + diff / 1000L / 60L / 60L / 24L);
-            System.out.format("Months: " + "%.2f", months);
-
-            }
-            catch (Exception e) {
-                System.out.println(e);
-            } finally {
-                System.out.println("\n");
-            }
-        }
 }

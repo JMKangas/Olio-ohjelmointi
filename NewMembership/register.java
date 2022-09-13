@@ -39,7 +39,7 @@ public class register {
                         choice = 0;
 
                         System.out.println("1) Add another member" + "\n" + "2) return to main menu" + "\n" + "2) quit the program");
-                        choiceInput = new Scanner(System.in);
+                        //choiceInput = new Scanner(System.in);
                         subchoice = choiceInput.nextInt();                      
 
 
@@ -147,7 +147,8 @@ private static void printmembers(File file)     {
             myWriter.close();
             System.out.println(fname + " " + lname + " " + tel + "\n");
 
- 
+     input.close();
+
     } catch (IOException e) {
 
         e.printStackTrace();
